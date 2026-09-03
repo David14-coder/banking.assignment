@@ -53,6 +53,8 @@
         `);
         if (choice === "1") {
           console.log("your balance is $50,000");
+
+          //   2: Deposit Money
         } else if (choice === "2") {
           let deposit = Number(prompt("How much do you want to deposit"));
 
@@ -67,8 +69,23 @@
             console.log("invalid deposit amount");
           }
         }
+
+        // 3: Withdraw Money
         if (choice === "3") {
-          console.log("withdrawal money");
+          let withdrawal = Number(prompt("How much do you want to withdraw"));
+
+          if ("withdrawal <= 0") {
+            console.log("invalid withdrawal amount.");
+          } else if (withdrawal > balance) {
+            console.log("insufficient balance.");
+          } else {
+            balance -= withdrawal;
+
+            transactions.push(`withdrawn ${balance}`);
+
+            console.log("withdrawal successful");
+            console.log(`New balance: ${balance}`);
+          }
         }
         if (choice === "4") {
           console.log("view transactions");
