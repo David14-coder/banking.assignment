@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>loops</title>
+  </head>
+  <body>
+    <h1>hello word</h1>
+
+    <script src="conditinal.js"></script>
+  </body>
+
+  <script>
+    let balance = 50000;
+    let transactions = [];
+
+    let correctPin = "1234";
+    let attempts = 0;
+    let loggedIn = false;
+
+    while (attempts < 3) {
+      let pin = prompt("Enter your PIN:");
+
+      if (pin === correctPin) {
+        console.log("Login successful");
+        loggedIn = true;
+        break;
+      } else {
+        attempts++;
+        alert("Incorrect PIN");
+      }
+    }
+
+    // Check if account should be blocked
+    if (!loggedIn) {
+      console.log("Too many incorrect attempts.");
+      console.log("Account temporarily blocked.");
+    } else {
+      let choice;
+
+      do {
+        choice = prompt(`
+        WELCOME TO SIMPLE BANK
+
+        1. Check Balance
+        2. Deposit Money
+        3. Withdraw Money
+        4. View Transactions
+        5. Exit
+
+        Enter your choice:
+        `);
+        if (choice === "1") {
+          console.log("your balance is $50,000");
+        } else if (choice === "2") {
+          let deposit = Number(prompt("How much do you want to deposit"));
+
+          if (deposit > 0) {
+            balance += deposit;
+
+            transactions.push(`deposit ${balance}`);
+
+            console.log("deposit successful");
+            console.log(`New balance ${balance}`);
+          } else {
+            console.log("invalid deposit amount");
+          }
+        }
+        if (choice === "3") {
+          console.log("withdrawal money");
+        }
+        if (choice === "4") {
+          console.log("view transactions");
+        }
+      } while (choice !== "5");
+      console.log("Thank you for using SIMPLE BANK!");
+    }
+  </script>
+
+  <!-- <script>
+    let balance = 50000;
+    let transactions = [];
+
+    let correctPin = "1234";
+    let attempts = 0;
+    let loggedIn = false;
+
+    // 1. PIN LOGIN
+    while (attempts < 3) {
+      let pin = prompt("Enter your PIN:");
+
+      if (pin === correctPin) {
+        console.log("Login successful");
+        loggedIn = true;
+        break;
+      } else {
+        attempts++;
+        alert("Incorrect PIN");
+      }
+    }
+
+    // Check if account should be blocked
+    if (!loggedIn) {
+      console.log("Too many incorrect attempts.");
+      console.log("Account temporarily blocked.");
+    } else {
+      // 2. BANKING MENU
+      let choice;
+
+      do {
+        choice = prompt(`
+WELCOME TO SIMPLE BANK
+
+1. Check Balance
+2. Deposit Money
+3. Withdraw Money
+4. View Transactions
+5. Exit
+
+Enter your choice:
+`);
+
+        // 3. CHECK BALANCE
+        if (choice === "1") {
+          console.log(`Your balance is ₦${balance}`);
+        }
+
+        // 4. DEPOSIT MONEY
+        else if (choice === "2") {
+          let deposit = Number(prompt("How much do you want to deposit?"));
+
+          if (deposit > 0) {
+            balance += deposit;
+
+            transactions.push(`Deposited ₦${deposit}`);
+
+            console.log("Deposit successful");
+            console.log(`New balance: ₦${balance}`);
+          } else {
+            console.log("Invalid deposit amount.");
+          }
+        }
+
+        // 5. WITHDRAW MONEY
+        else if (choice === "3") {
+          let withdrawal = Number(prompt("How much do you want to withdraw?"));
+
+          if (withdrawal <= 0) {
+            console.log("Invalid withdrawal amount.");
+          } else if (withdrawal > balance) {
+            console.log("Insufficient balance.");
+          } else {
+            balance -= withdrawal;
+
+            transactions.push(`Withdrawn ₦${withdrawal}`);
+
+            console.log("Withdrawal successful");
+            console.log(`New balance: ₦${balance}`);
+          }
+        }
+
+        // 6. VIEW TRANSACTIONS
+        else if (choice === "4") {
+          if (transactions.length === 0) {
+            console.log("No transactions yet.");
+          } else {
+            console.log("Transaction History:");
+
+            for (let transaction of transactions) {
+              console.log(transaction);
+            }
+          }
+        }
+
+        // 7. EXIT
+        else if (choice === "5") {
+          console.log("Thank you for banking with Simple Bank.");
+        } else {
+          console.log("Invalid choice. Please select 1-5.");
+        }
+      } while (choice !== "5");
+    }
+  </script> -->
+</html>
