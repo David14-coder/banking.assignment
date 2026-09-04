@@ -52,7 +52,9 @@
         Enter your choice:
         `);
         if (choice === "1") {
-          console.log("your balance is $50,000");
+          console.log(`your balance is ${balance}`);
+
+          transactions.push(`40000`);
 
           //   2: Deposit Money
         } else if (choice === "2") {
@@ -87,11 +89,27 @@
             console.log(`New balance: ${balance}`);
           }
         }
-        if (choice === "4") {
-          console.log("view transactions");
+
+        // view transactions
+        else if (choice === "4") {
+          if (transactions.length === 0) {
+            console.log("No transaction yet");
+          } else {
+            console.log("Transaction History:");
+
+            for (let transaction of transactions) {
+              console.log(Transaction);
+            }
+          }
+        }
+
+        // exit
+        else if (choice === "5") {
+          console.log("Thank you for using SIMPLE BANK!");
+        } else {
+          console.log("invalid choice, please select 1-5.");
         }
       } while (choice !== "5");
-      console.log("Thank you for using SIMPLE BANK!");
     }
   </script>
 
